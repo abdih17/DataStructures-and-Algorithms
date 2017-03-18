@@ -1,0 +1,26 @@
+{
+  "name": "DataStructures-and-Algorithms",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/_mocha ./test/*-test/",
+    "lint": "./node_modules/eslint/bin/eslint.js ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abdih17/DataStructures-and-Algorithms.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abdih17/DataStructures-and-Algorithms/issues"
+  },
+  "homepage": "https://github.com/abdih17/DataStructures-and-Algorithms#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^3.17.1",
+    "mocha": "^3.2.0"
+  }
+}
