@@ -13,12 +13,18 @@ Stack.prototype.pop = function() {
 };
 
 Stack.prototype.peek = function() {
-  return this.array[this.length - 1];
+  return this.array[this.array.length - 1];
 };
 
 Stack.prototype.isEmpty = function() {
-  this.array.length === 0 ? 'true': 'false';
+  if (this.array === 0) {
+    return true;
+  } else {
+    return false;
+  }
 };
+
+//Test Cases:
 
 var stack = new Stack();
 
@@ -34,8 +40,17 @@ stack.pop();
 
 console.log('Second Stack:', stack);
 
-stack.peek();
+var peek = stack.peek();
 
-console.log('Peek at the item:', stack);
+console.log('Peek at the item:', peek);
 
-console.log('Is it Empty:', stack.isEmpty());
+var notEmpty = stack.isEmpty();
+
+console.log('Is it Empty:', notEmpty);
+
+stack.pop();
+stack.pop();
+
+var empty = stack.isEmpty();
+
+console.log('Is it Empty:', empty);

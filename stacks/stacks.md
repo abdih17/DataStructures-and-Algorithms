@@ -15,4 +15,4 @@ Here are all of the operations used on a Stack:
 
 Here's a simple use-case for stacks — your browser’s back button. You would create a stack of URLs as you browser through the web, which in the background is pushing (using the push operation) every new URL on top of that stack. If you press the back button, it would pop off the current URL therefore utilizing the essence of a stack data structure.
 
-[<img src="https://media.giphy.com/media/50wdXgH0hm3jW/giphy.gif">]
+<img src="https://media.giphy.com/media/50wdXgH0hm3jW/giphy.gif">
