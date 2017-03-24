@@ -1,5 +1,8 @@
 'use strict';
 
+// TODO: finish the markdown for this problem.
+// TODO: also write out the problem from Cracking the Coding Interview
+
 var Queue = function() {
   this.dog = [];
   this.cat = [];
