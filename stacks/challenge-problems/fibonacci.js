@@ -2,6 +2,12 @@
 
 // TODO: Write more information on what this function does and how it relates to a stack data structure.
 
+// TODO: Define a recursive function, and also write this solution without a recursive function
+
+// TODO: Update all challenges by including the BigO notation and with evidences
+
+// TODO: Work on README.md
+
 function fibonacci(num) {
   if (num <= 1) return 1;
 
