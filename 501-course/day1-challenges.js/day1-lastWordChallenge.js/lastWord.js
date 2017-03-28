@@ -54,3 +54,13 @@ var lengthOfWord = lastWordLen(word);
 console.log('Length: ', lengthOfWord);
 
 /***************************REVIEW****************************/
+
+function lastWordFunction(string) {
+  var match = /.*\s(\w+)\W*$/.exec(string);
+  return match[1].length;
+}
+
+var lastWordTest = lastWordFunction('the quick brown fox jumped over the lazy dog.');
+
+console.log(lastWordTest);
+console.log(lastWord('fabulously furry fantastic furballs???\"'));
