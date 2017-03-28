@@ -1,16 +1,19 @@
 'use strict';
 
-//Given a text find the length of the last element.
-/* Notes:
-  1 - It can be a string that can have non-alphanumeric characters.
-  2 - You can mutate the string
-  3 - You are provided a isPunction method
-*/
+var testString = 'Hello, will be! home? soon. world';
 
-// TODO: Test for edgecases!
+function lastWord(str) {
+  var strSplit = str.split(' ');
+  var lastWord = strSplit[strSplit.length - 1];
+  var lengthLastWord = lastWord.length;
+  return lengthLastWord;
+}
+
+var lengthOfLastword = lastWord(testString);
+
+console.log('Length: ', lengthOfLastword);
+
 /**************************REVIEW*******************************/
-
-//Big 0: Time: O(n) Space: Constant
 
 function lastWordLen(str) {
   var lengthOfLastWord = 0;
@@ -52,8 +55,6 @@ console.log('Length: ', lengthOfWord);
 
 /***************************REVIEW****************************/
 
-//Big 0: Time: O(1) Space: Constant
-
 function lastWordFunction(string) {
   var match = /.*\s(\w+)\W*$/.exec(string);
   return match[1].length;
@@ -62,4 +63,4 @@ function lastWordFunction(string) {
 var lastWordTest = lastWordFunction('the quick brown fox jumped over the lazy dog.');
 
 console.log(lastWordTest);
-console.log(lastWordFunction('fabulously furry fantastic furballs???\"'));
+console.log(lastWord('fabulously furry fantastic furballs???\"'));
