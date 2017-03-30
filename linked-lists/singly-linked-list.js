@@ -80,13 +80,53 @@ SinglyLinkedList.prototype.addToEnd = function(data) {
   return node;
 };
 
+/**********************REMOVE OPERATIONS********************************/
+
+SinglyLinkedList.prototype.removeFromFront = function() {
+  if (!this.head) return;
+
+  var currentHead = this.head;
+  this.head = this.head.next;
+  var deletedNode = currentHead;
+  currentHead = null;
+  this.size--;
+  return deletedNode;
+};
+
+SinglyLinkedList.prototype.removeFromMiddle = function() {
+  var currentNode = this.head;
+
+  if(this.head === null) {
+    return;
+  } else if (this.head.next !== null && this.tail.next === null) {
+    var fast = currentNode;
+    var slow = currentNode;
+    var increment = false;
+
+    while (fast && fast.next) {
+      if(increment){
+        slow = slow.next;
+      }
+      increment = !increment;
+      fast = fast.next;
+    }
+    slow = null;
+    this.size--;
+  } else {
+    return;
+  }
+};
+
 var sll = new SinglyLinkedList();
-sll.addToFront('A');
+
+sll.addToFront('A'); // adds all of the 'data' into the linked list
 sll.addToFront('B');
 sll.addToFront('C');
 sll.addToFront('D');
+sll.addToFront('E');
+sll.addToFront('F');
 
-sll.addToMiddle('5');
+sll.addToMiddle('5'); // adds '5' to the middle of the linked list
 
 console.log('First Singly Linked List: ', sll);
 
@@ -99,7 +139,7 @@ First Singly Linked List:  SinglyLinkedList {
 
 sll.addToEnd('hello');
 
-console.log('Last Singly Linked List: ', sll);
+console.log('Second Singly Linked List: ', sll);
 
 /*
 Last Singly Linked List:  SinglyLinkedList {
@@ -107,3 +147,12 @@ Last Singly Linked List:  SinglyLinkedList {
   tail: Node { data: 'hello', next: null },
   size: 6 }
 */
+
+sll.removeFromFront(); // removes 'F'
+
+console.log('Third Singly Linked List: ', sll);
+
+sll.removeFromMiddle(); // removes 'C'
+sll.removeFromMiddle(); // removes '5'
+
+console.log('Last Singly Linked List: ', sll);
