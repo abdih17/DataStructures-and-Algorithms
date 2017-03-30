@@ -93,30 +93,6 @@ SinglyLinkedList.prototype.removeFromFront = function() {
   return deletedNode;
 };
 
-SinglyLinkedList.prototype.removeFromMiddle = function() {
-  var currentNode = this.head;
-
-  if(this.head === null) {
-    return;
-  } else if (this.head.next !== null && this.tail.next === null) {
-    var fast = currentNode;
-    var slow = currentNode;
-    var increment = false;
-
-    while (fast && fast.next) {
-      if(increment){
-        slow = slow.next;
-      }
-      increment = !increment;
-      fast = fast.next;
-    }
-    slow = null;
-    this.size--;
-  } else {
-    return;
-  }
-};
-
 var sll = new SinglyLinkedList();
 
 sll.addToFront('A'); // adds all of the 'data' into the linked list
@@ -142,7 +118,7 @@ sll.addToEnd('hello');
 console.log('Second Singly Linked List: ', sll);
 
 /*
-Last Singly Linked List:  SinglyLinkedList {
+Second Singly Linked List:  SinglyLinkedList {
   head: Node { data: 'D', next: Node { data: 'C', next: [Object] } },
   tail: Node { data: 'hello', next: null },
   size: 6 }
@@ -152,7 +128,9 @@ sll.removeFromFront(); // removes 'F'
 
 console.log('Third Singly Linked List: ', sll);
 
-sll.removeFromMiddle(); // removes 'C'
-sll.removeFromMiddle(); // removes '5'
-
-console.log('Last Singly Linked List: ', sll);
+/*
+Third Singly Linked List:  SinglyLinkedList {
+  head: Node { data: 'E', next: Node { data: 'D', next: [Object] } },
+  tail: Node { data: 'hello', next: null },
+  size: 7 }
+*/
