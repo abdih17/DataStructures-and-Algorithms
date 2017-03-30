@@ -123,6 +123,48 @@ SinglyLinkedList.prototype.removeFromMiddle = function() {
   }
 };
 
+SinglyLinkedList.prototype.removeFromEnd = function() {
+  var currentNode = this.head;
+
+  if (!this.head) return;
+
+  var current = currentNode;
+  var increment = false;
+
+  while (current !== this.tail) {
+    if (increment) {
+      var previousNode = current;
+      current = current.next;
+    }
+    increment = !increment;
+    currentNode = previousNode;
+  }
+  currentNode.next = null;
+  this.tail = previousNode;
+  current = null;
+  this.size--;
+  return currentNode;
+};
+
+/**********************SEARCH OPERATIONS********************************/
+
+SinglyLinkedList.prototype.searchForNode = function(position) {
+  var currentNode = this.head;
+  var size = this.size;
+  var count = 1;
+
+  if(!this.head || position < 1 || position > size) return;
+
+  while(count < position) {
+    currentNode = currentNode.next;
+    count++;
+  }
+
+  return currentNode;
+};
+
+/**********************TEST RESULTS********************************/
+
 var sll = new SinglyLinkedList();
 
 sll.addToFront('A'); // adds all of the 'data' into the linked list
@@ -174,4 +216,25 @@ Fourth Singly Linked List:  SinglyLinkedList {
   head: Node { data: 'E', next: Node { data: 'D', next: [Object] } },
   tail: Node { data: 'hello', next: null },
   size: 6 }
+*/
+
+sll.removeFromEnd(); // removes 'hello'
+
+console.log('Last Singly Linked List: ', sll);
+
+/*
+Last Singly Linked List:  SinglyLinkedList {
+  head: Node { data: 'E', next: Node { data: 'D', next: [Object] } },
+  tail: Node { data: 'A', next: null },
+  size: 5 }
+*/
+
+var search = sll.searchForNode(3);
+
+console.log('Search ', search); // should return '5' without removing it from the linked list
+
+/*
+Search  Node {
+  data: '5',
+  next: Node { data: 'B', next: Node { data: 'A', next: null } } }
 */
