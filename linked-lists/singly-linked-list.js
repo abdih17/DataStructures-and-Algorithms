@@ -13,6 +13,8 @@ function SinglyLinkedList() {
   this.size = 0;
 }
 
+/**********************INSERTION OPERATIONS********************************/
+
 SinglyLinkedList.prototype.addToFront = function(data) {
   var node = new Node(data);
 
@@ -93,6 +95,34 @@ SinglyLinkedList.prototype.removeFromFront = function() {
   return deletedNode;
 };
 
+SinglyLinkedList.prototype.removeFromMiddle = function() {
+  var currentNode = this.head;
+
+  if(this.head === null) {
+    return;
+  } else if (this.head.next !== null && this.tail.next === null) {
+    var fast = currentNode;
+    var slow = currentNode;
+    var increment = false;
+
+    while (fast && fast.next) {
+      if(increment){
+        var previousSlow = slow;
+        slow = slow.next;
+      }
+      increment = !increment;
+      fast = fast.next;
+    }
+    previousSlow.next = slow.next;
+    var currentSlow = slow;
+    slow = null;
+    this.size--;
+    return currentSlow;
+  } else {
+    return;
+  }
+};
+
 var sll = new SinglyLinkedList();
 
 sll.addToFront('A'); // adds all of the 'data' into the linked list
@@ -133,4 +163,15 @@ Third Singly Linked List:  SinglyLinkedList {
   head: Node { data: 'E', next: Node { data: 'D', next: [Object] } },
   tail: Node { data: 'hello', next: null },
   size: 7 }
+*/
+
+sll.removeFromMiddle(); // removes 'C'
+
+console.log('Fourth Singly Linked List: ', sll);
+
+/*
+Fourth Singly Linked List:  SinglyLinkedList {
+  head: Node { data: 'E', next: Node { data: 'D', next: [Object] } },
+  tail: Node { data: 'hello', next: null },
+  size: 6 }
 */
