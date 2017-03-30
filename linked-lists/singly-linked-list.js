@@ -1,5 +1,7 @@
 'use strict';
 
+// TODO: work on linked lists operations without the this.tail properties??
+
 function Node(data) {
   this.data = data;
   this.next = null;
