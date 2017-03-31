@@ -13,7 +13,7 @@ function SinglyLinkedList() {
   this.size = 0;
 }
 
-/**********************INSERTION OPERATIONS********************************/
+//**********************INSERTION OPERATIONS********************************/
 
 SinglyLinkedList.prototype.addToFront = function(data) {
   var node = new Node(data);
@@ -82,7 +82,7 @@ SinglyLinkedList.prototype.addToEnd = function(data) {
   return node;
 };
 
-/**********************REMOVE OPERATIONS********************************/
+//**********************REMOVE OPERATIONS********************************/
 
 SinglyLinkedList.prototype.removeFromFront = function() {
   if (!this.head) return;
@@ -146,7 +146,55 @@ SinglyLinkedList.prototype.removeFromEnd = function() {
   return currentNode;
 };
 
-/**********************SEARCH OPERATIONS********************************/
+SinglyLinkedList.prototype.removingByPosition = function(position) {
+  var currentNode = this.head;
+  var size = this.size;
+  var count = 1;
+  var afterCurrentNode = null;
+  var previousNode = null;
+
+  if (position < 1 || size < position || !this.head) return;
+
+  while (count < position) {
+    previousNode = currentNode;
+    currentNode = currentNode.next;
+    count++;
+  }
+
+  if (currentNode === this.head) {
+    var currentHead = this.head;
+    this.head = this.head.next;
+    var deletedNode = currentHead;
+    currentHead = null;
+    this.size--;
+    return deletedNode;
+  } else if (currentNode === this.tail) {
+    var current = currentNode;
+    var increment = false;
+
+    while (current !== this.tail) {
+      if (increment) {
+        previousNode = current;
+        current = current.next;
+      }
+      increment = !increment;
+      currentNode = previousNode;
+    }
+    currentNode.next = null;
+    this.tail = previousNode;
+    current = null;
+    this.size--;
+    return currentNode;
+  } else {
+    afterCurrentNode = currentNode.next;
+    currentNode.next = null;
+    afterCurrentNode = previousNode.next;
+    this.size--;
+    return currentNode;
+  }
+};
+
+//**********************SEARCH OPERATIONS********************************/
 
 SinglyLinkedList.prototype.searchForNode = function(position) {
   var currentNode = this.head;
@@ -161,9 +209,9 @@ SinglyLinkedList.prototype.searchForNode = function(position) {
   }
 
   return currentNode;
-};
+}
 
-/**********************TEST RESULTS********************************/
+//**********************TEST RESULTS********************************/
 
 var sll = new SinglyLinkedList();
 
@@ -220,21 +268,38 @@ Fourth Singly Linked List:  SinglyLinkedList {
 
 sll.removeFromEnd(); // removes 'hello'
 
+console.log('Fifth Singly Linked List: ', sll);
+
+/*
+Fifth Singly Linked List:  SinglyLinkedList {
+  head: Node { data: 'E', next: Node { data: 'D', next: [Object] } },
+  tail: Node { data: 'A', next: null },
+  size: 5 }
+*/
+
+var search = sll.searchForNode(1);
+
+console.log('Search ', search);
+
+/*
+Search  Node {
+  data: '5',
+  next: Node { data: 'B', next: Node { data: 'A', next: null } } }
+*/
+
+var removed = sll.removingByPosition(1);
+
+console.log('Removed, ', removed);
+
+/*
+Removed,  Node { data: '5', next: null }
+*/
+
 console.log('Last Singly Linked List: ', sll);
 
 /*
 Last Singly Linked List:  SinglyLinkedList {
   head: Node { data: 'E', next: Node { data: 'D', next: [Object] } },
   tail: Node { data: 'A', next: null },
-  size: 5 }
-*/
-
-var search = sll.searchForNode(3);
-
-console.log('Search ', search); // should return '5' without removing it from the linked list
-
-/*
-Search  Node {
-  data: '5',
-  next: Node { data: 'B', next: Node { data: 'A', next: null } } }
+  size: 4 }
 */
