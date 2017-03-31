@@ -2,6 +2,8 @@
 
 // TODO: work on linked lists operations without the this.tail properties??
 
+module.exports = SinglyLinkedList;
+
 function Node(data) {
   this.data = data;
   this.next = null;
@@ -209,7 +211,7 @@ SinglyLinkedList.prototype.searchForNode = function(position) {
   }
 
   return currentNode;
-}
+};
 
 //**********************TEST RESULTS********************************/
 
