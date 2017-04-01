@@ -6,6 +6,8 @@ const SinglyLinkedList = require('./singly-linked-list.js');
 SinglyLinkedList.prototype.reverseSLL = function() {
   var currentNode = this.head;
   var previousNode = this.head;
+  var lastNode = this.head;
+  var decrement = false;
 
   if(!this.head) return;
 
@@ -19,18 +21,15 @@ SinglyLinkedList.prototype.reverseSLL = function() {
     }
     increment = !increment;
     currentNode = previousNode;
-  }
 
-  var lastNode = this.head;
-  var decrement = false;
-
-  while (lastNode.next === null) {
-    if (decrement) {
-      previousNode = current;
-      current = current.next;
+    while (lastNode.next === null) {
+      if (decrement) {
+        previousNode = current;
+        current = current.next;
+      }
+      decrement = !decrement;
+      currentNode = previousNode;
     }
-    decrement = !decrement;
-    currentNode = previousNode;
   }
 
   return;
