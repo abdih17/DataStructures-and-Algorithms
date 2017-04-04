@@ -25,6 +25,23 @@ function BinarySearchTree() {
   this.root = null;
 }
 
+//
+var bst = new BinarySearchTree();
+bst.root = new Node('A');
+bst.root.left = new Node('B');
+bst.root.left.left = new Node('C');
+bst.root.left.left.left = new Node('D');
+bst.root.left.right = new Node('E');
+bst.root.left.right.left = new Node('F');
+bst.root.left.right.right = new Node('G');
+bst.root.right = new Node('H');
+bst.root.right.left = new Node('I');
+bst.root.right.left.left = new Node('J');
+bst.root.right.left.right = new Node('K');
+bst.root.right.right = new Node('L');
+bst.root.right.right.right = new Node('M');
+bst.root.right.right.right.right = new Node('N');
+
 BinarySearchTree.prototype.add = function(data) {
   var root = this.root;
 

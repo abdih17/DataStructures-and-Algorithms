@@ -3,34 +3,42 @@
 
 const SinglyLinkedList = require('./singly-linked-list.js');
 
-SinglyLinkedList.prototype.reverseSLL = function() {
-  var currentNode = this.head;
+SinglyLinkedList.prototype.reverseSinglyLinkedList = function() {
+
+  if(!this.head && this.head.next === null) return;
+
+  var tempHead = this.head;
+  var tempTail = this.tail;
+
   var previousNode = this.head;
-  var lastNode = this.head;
-  var decrement = false;
+  var currentNode = this.head.next;
+  var tempNode = this.head;
+  this.head.next = null;
 
-  if(!this.head) return;
-
-  var current = currentNode;
-  var increment = false;
-
-  while (current.next === null) {
-    if (increment) {
-      previousNode = current;
-      current = current.next;
-    }
-    increment = !increment;
-    currentNode = previousNode;
-
-    while (lastNode.next === null) {
-      if (decrement) {
-        previousNode = current;
-        current = current.next;
-      }
-      decrement = !decrement;
-      currentNode = previousNode;
-    }
+  while(currentNode.next !== null) {
+    tempNode = currentNode;
+    currentNode = currentNode.next;
+    tempNode.next = previousNode;
+    previousNode = tempNode;
   }
 
-  return;
+  currentNode.next = tempNode;
+  tempHead = this.tail;
+  tempTail = this.head;
+  tempTail.next = null;
 };
+
+var sll = new SinglyLinkedList();
+
+sll.addToFront('A'); // adds all of the 'data' into the linked list
+sll.addToFront('B');
+sll.addToFront('C');
+sll.addToFront('D');
+sll.addToFront('E');
+sll.addToFront('F');
+
+console.log('First Singly Linked List: ', sll);
+
+sll.reverseSinglyLinkedList();
+
+console.log('Reversed Singly Linked List: ', sll);
