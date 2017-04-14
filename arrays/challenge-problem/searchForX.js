@@ -1,5 +1,7 @@
 'use strict';
 
+// TODO: Come up with more extensive tests.
+
 function SearchForX(array, x) {
   var high = array.length - 1;
   var low = 0;
