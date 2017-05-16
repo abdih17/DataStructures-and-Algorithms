@@ -25,7 +25,8 @@ function BinarySearchTree() {
   this.root = null;
 }
 
-//
+function Hello(data)
+
 var bst = new BinarySearchTree();
 bst.root = new Node('A');
 bst.root.left = new Node('B');
