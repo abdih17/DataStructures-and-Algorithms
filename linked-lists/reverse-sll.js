@@ -8,6 +8,7 @@ SinglyLinkedList.prototype.reverseSinglyLinkedList = function() {
   if(!this.head && this.head.next === null) return;
 
   var tempHead = this.head;
+  // TODO: WHY IS IT COMPLAINING???
   var tempTail = this.tail;
 
   var previousNode = this.head;
