@@ -17,6 +17,7 @@ var fizzbuzz = function(array) {
 };
 
 var array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+//results => 1, 2, fizz, 4, buzz, fizz, 7, 8, 9, buzz, 11, fizz, 13, 14, fizzbuzz
 
 fizzbuzz(array);
 
@@ -38,3 +39,4 @@ var fizzbuzz2 = function(array) {
 var array2 = [1, 3, 5, 7, 15, 21, 25, 30];
 
 fizzbuzz2(array2);
+//results => 1, fizz, buzz, 7, fizzbuzz, fizz, buzz, fizzbuzz
