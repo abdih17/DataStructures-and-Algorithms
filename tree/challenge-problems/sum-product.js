@@ -3,14 +3,14 @@
 var root = { data: 2, left: null, right: null };
 //left side
 var node1 = { data: 7, left: null, right: null };
-var node2 = {data: 2, left: null, right: null };
-var node3 = {data: 6, left: null, right: null };
-var node4 = {data: 5, left: null, right: null };
-var node5 = {data: 11, left: null, right: null };
+var node2 = { data: 2, left: null, right: null };
+var node3 = { data: 6, left: null, right: null };
+var node4 = { data: 5, left: null, right: null };
+var node5 = { data: 11, left: null, right: null };
 //right side
-var node6 = {data: 5, left: null, right: null };
-var node7 = {data: 9, left: null, right: null };
-var node8 = {data: 4, left: null, right: null };
+var node6 = { data: 5, left: null, right: null };
+var node7 = { data: 9, left: null, right: null };
+var node8 = { data: 4, left: null, right: null };
 
 root.left = node1;           // 2 -> 7
 root.right = node6;          // 2 -> 5

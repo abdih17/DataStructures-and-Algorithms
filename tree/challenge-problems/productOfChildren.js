@@ -19,20 +19,19 @@ node1.children.push(node3);
 node1.children.push(node4);
 node1.children.push(node5);
 
-var sum = 0;
+var product = 1;
 
-function sumOfChildren(node){
-  if(!node) return 0;
+function productOfChildren(node){
+  if (!node) return 1;
 
   var data = node.data;
-  console.log(data)
-  sum += data
+  product *= data;
 
-  for(var i = 0; i < node.children.length; i++){
-    sumOfChildren(node.children[i])
+  for(var i = 0; i < node.children.length; i++) {
+    productOfChildren(node.children[i]);
   }
 
-  return sum;
+  return product;
 }
 
-sumOfChildren(root);
+productOfChildren(root);
