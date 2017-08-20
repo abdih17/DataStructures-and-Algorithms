@@ -35,3 +35,11 @@ function sum(node){
 }
 
 console.log(sum(root));
+
+function product(node){
+  if(!node) return 1;
+
+  return node.data * product(node.right) * product(node.left);
+}
+
+console.log(product(root));
