@@ -23,9 +23,7 @@ function Node(data) {
 
 function BinarySearchTree() {
   this.root = null;
-}
-
-function Hello(data)
+};
 
 var bst = new BinarySearchTree();
 bst.root = new Node('A');
