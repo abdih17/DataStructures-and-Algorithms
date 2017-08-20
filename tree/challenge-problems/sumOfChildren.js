@@ -1,3 +1,5 @@
+'use strict';
+
 var root = { data: 5, children: [] };
 //children node objects will be stored in an array
 var node1 = { data: 1, children: [] };
@@ -17,14 +19,20 @@ node1.children.push(node3);
 node1.children.push(node4);
 node1.children.push(node5);
 
-function traverseChildren(node){
-  if(!node) return;
+var counter = 0;
 
-  console.log(node.data);
+function sumOfChildren(node){
+  if(!node) return 0;
+
+  var data = node.data;
+  console.log(data)
+  counter += data
 
   for(var i = 0; i < node.children.length; i++){
-    traverseChildren(node.children[i])
+    sumOfChildren(node.children[i])
   }
+
+  return counter;
 }
 
-traverseChildren(root);
+sumOfChildren(root);
