@@ -3,7 +3,7 @@
 
 function stringCompression(str){
 	//1 - do it recursively?
-  var letterCounter = {}, current = '', previous = '', arrayOfObjects = [], compressedString = '';
+  var letterCounter = {}, current = '', previous = '', arrayOfObjects = [], compressedString = '', stringLength = str.length - 1, counterForDigits = 0;
 
   //2 - create an object to store each letter
 
@@ -16,7 +16,6 @@ function stringCompression(str){
       previous = str[i - 1];
 
       if(current === previous) {
-      	console.log('hi')
       	if(!letterCounter[current]){
         	console.log('It exists: ', letterCounter[current]);
         	letterCounter[current] = 1;
@@ -25,21 +24,29 @@ function stringCompression(str){
           console.log('Each letter has an object of it\'s own: ', letterCounter);
         }
       } else {
-      	arrayOfObjects.push(letterCounter);
+      	console.log('PREVIOUS LETTERCOUNTER: ', letterCounter[previous])
+      	counterForDigits += Math.ceil(Math.log10(letterCounter[previous]) + 1) + 1;
+        console.log('DIGITS: ', counterForDigits);
+        console.log('STRING LENGTH: ', stringLength);
+        arrayOfObjects.push(letterCounter);
         letterCounter = {};
         letterCounter[current] = 1;
       }
     }
   }
   arrayOfObjects.push(letterCounter);
-
-  for(var i = 0; i < arrayOfObjects.length; i++){
-  	compressedString += Object.keys(arrayOfObjects[i]);
-    compressedString += Object.values(arrayOfObjects[i]);
+  console.log('FINAL COUNTERFORDIGITS############: ', counterForDigits)
+  if (stringLength > counterForDigits) {
+    for(var i = 0; i < arrayOfObjects.length; i++){
+      compressedString += Object.keys(arrayOfObjects[i]);
+      compressedString += Object.values(arrayOfObjects[i]);
+    }
+    return compressedString;
+  } else {
+  	console.log('Final compression string is longer or equal to the original string\'s length, so it should return nothing');
   }
-
-  return compressedString;
 }
 
-console.log(stringCompression('aabcccccaaa'));
-console.log(stringCompression('abbbbbbbbbbczzztt'));
+console.log(stringCompression('aabcccccaaa')); //a2b1c5a3
+console.log(stringCompression('zzzyyvhhhhh')); //z3y2v1h5
+console.log(stringCompression('aabca')); //should return nothing
