@@ -42,3 +42,4 @@ function stringCompression(str){
 }
 
 console.log(stringCompression('aabcccccaaa'));
+console.log(stringCompression('abbbbbbbbbbczzztt'));
