@@ -29,25 +29,26 @@ function printPaths(start, destination) {
     printPath(paths[i]);
   }
 }
-
-// paths is an array of arrays that contains currentPath
-// currentPath is just an array of edges
+var currentRoute = [];
+// paths is array of arrays that contains currentPath
+// current path is just array of edges
 function findPaths(start, destination, paths, currentPath) {
+  if (start === destination) {
+    paths.push(currentPath);
+    return;
+  }
 
   for(var i = 0; i < start.edges.length; i++) {
     var edge = start.edges[i];
     currentPath.push(edge);
-    if (start === destination) {
-    paths.push(currentPath);
-    currentPath = [];
-    return;
-  	} else {
-    	 findPaths(edge.to, destination, paths, currentPath);
-
+    var destinationFound = findPaths(edge.to, destination, paths, currentPath);
+    if (destinationFound) {
+    	currentRoute.push(currentPath);
+      currentPath = [];
     }
-   }
+  }
 
-  return false
+  return currentRoute;
 }
 
 printPaths(nodeA, nodeD);
