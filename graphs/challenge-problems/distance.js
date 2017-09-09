@@ -29,7 +29,7 @@ function printPaths(start, destination) {
     printPath(paths[i]);
   }
 }
-var currentRoute = [];
+
 // paths is array of arrays that contains currentPath
 // current path is just array of edges
 function findPaths(start, destination, paths, currentPath) {
@@ -41,14 +41,16 @@ function findPaths(start, destination, paths, currentPath) {
   for(var i = 0; i < start.edges.length; i++) {
     var edge = start.edges[i];
     currentPath.push(edge);
-    var destinationFound = findPaths(edge.to, destination, paths, currentPath);
-    if (destinationFound) {
-    	currentRoute.push(currentPath);
-      currentPath = [];
-    }
+    findPaths(edge.to, destination, paths, copyArray(currentPath));
   }
+}
 
-  return currentRoute;
+function copyArray(a) {
+  var copy = [];
+  for (var i = 0; i < a.length; i++) {
+    copy.push(a[i]);
+  }
+  return copy;
 }
 
 printPaths(nodeA, nodeD);
