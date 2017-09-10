@@ -40,8 +40,9 @@ function findPaths(start, destination, paths, currentPath) {
 
   for(var i = 0; i < start.edges.length; i++) {
     var edge = start.edges[i];
-    currentPath.push(edge);
-    findPaths(edge.to, destination, paths, copyArray(currentPath));
+    var forkedPath = copyArray(currentPath);
+    forkedPath.push(edge);
+    findPaths(edge.to, destination, paths, forkedPath);
   }
 }
 
@@ -51,6 +52,10 @@ function copyArray(a) {
     copy.push(a[i]);
   }
   return copy;
+}
+
+function shortestRoute(paths) {
+
 }
 
 printPaths(nodeA, nodeD);
