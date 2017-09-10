@@ -19,6 +19,7 @@ function printPath(path) {
   for (var i = 0; i < path.length; ++i) {
     printEdge(path[i]);
   }
+
 }
 
 function printPaths(start, destination) {
@@ -27,6 +28,7 @@ function printPaths(start, destination) {
   // Print paths
   for (var i = 0; i < paths.length; ++i) {
     printPath(paths[i]);
+    calculateDistance(paths[i])
   }
 }
 
@@ -42,6 +44,7 @@ function findPaths(start, destination, paths, currentPath) {
     var edge = start.edges[i];
     var forkedPath = copyArray(currentPath);
     forkedPath.push(edge);
+
     findPaths(edge.to, destination, paths, forkedPath);
   }
 }
@@ -51,11 +54,34 @@ function copyArray(a) {
   for (var i = 0; i < a.length; i++) {
     copy.push(a[i]);
   }
-  return copy;
+  return copy; // [a, b, c, d]
+}
+var arrayOfDistances = [];
+function calculateDistance(paths) {
+	var distance = 0;
+  for (var i = 0; i < paths.length; ++i) {
+    distance += paths[i].value;
+  }
+  arrayOfDistances.push(distance);
+  findShortestDistance(arrayOfDistances);
 }
 
-function shortestRoute(paths) {
-
+var min = 0;
+function findShortestDistance(distances) {
+	console.log('DISTANCES:', distances);
+  if(distances.length > 2) {
+  	for(var i = 0; i < distances.length; i++){
+  		var currentNumber = distances[i];
+      if(min > currentNumber){
+        min = currentNumber;
+      } else {
+        continue;
+      }
+  	}
+  } else {
+  	min = distances[0];
+  }
+  console.log('Shortest route: ', min);
 }
 
 printPaths(nodeA, nodeD);
